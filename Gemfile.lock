@@ -5,6 +5,14 @@ GIT
     passiverecord (0.2)
 
 GIT
+  remote: git://github.com/shanti-uva/shanti_integration.git
+  revision: 6b32dafe0dc296528a52f0647cc05351516f7f5d
+  tag: v2.1.9
+  specs:
+    shanti_integration (2.1.9)
+      rails (~> 3.2.8)
+
+GIT
   remote: git://github.com/thl/authenticated_system.git
   revision: 2ac68087a70230d93d3a3b314748bb4f20271a72
   tag: v2.1.4
@@ -28,12 +36,6 @@ GIT
   specs:
     interface_utils (2.0.5)
       rails (~> 3.2.11)
-
-PATH
-  remote: ../engines/shanti_integration
-  specs:
-    shanti_integration (2.1.8)
-      rails (~> 3.2.8)
 
 GEM
   remote: https://rubygems.org/
@@ -189,7 +191,7 @@ DEPENDENCIES
   rails (= 3.2.13)
   ruby-debug
   sass-rails (~> 3.2.3)
-  shanti_integration (= 2.1.8)!
+  shanti_integration (= 2.1.9)!
   tinymce-rails (= 3.5.6)
   uglifier (>= 1.0.3)
   will_paginate (~> 3.0)
