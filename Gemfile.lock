@@ -5,28 +5,30 @@ GIT
     passiverecord (0.2)
 
 GIT
-  remote: git://github.com/shanti-uva/shanti_integration.git
-  revision: bede1c99a5f6c34dd5ba327f3366a6f808539783
-  tag: v2.1.8
+  remote: git://github.com/thl/interface_utils.git
+  revision: 961ae0cae81f080110968a9478c212e94fec1ca8
+  tag: v2.0.5
   specs:
-    shanti_integration (2.1.8)
-      rails (~> 3.2.8)
+    interface_utils (2.0.5)
+      rails (~> 3.2.11)
 
-GIT
-  remote: git://github.com/thl/authenticated_system.git
-  revision: 2b8651e650e0c357014e01bd8b4478d51aaea27d
-  tag: v2.1.3
+PATH
+  remote: ../../thl/engines/authenticated_system
   specs:
     authenticated_system (2.1.3)
       rails (~> 3.2.8)
 
-GIT
-  remote: git://github.com/thl/complex_scripts.git
-  revision: de0e58a00e7b40705bbae6ad1a46980a5deca55b
-  tag: v2.0.8
+PATH
+  remote: ../../thl/engines/complex_scripts
   specs:
     complex_scripts (2.0.8)
       passiverecord (= 0.2)
+      rails (~> 3.2.8)
+
+PATH
+  remote: ../engines/shanti_integration
+  specs:
+    shanti_integration (2.1.8)
       rails (~> 3.2.8)
 
 GEM
@@ -73,6 +75,7 @@ GEM
     coffee-script-source (1.6.3)
     columnize (0.3.6)
     daemons (1.1.9)
+    dynamic_form (1.1.4)
     erubis (2.7.0)
     execjs (2.0.2)
     fastthread (1.0.7)
@@ -168,7 +171,9 @@ DEPENDENCIES
   authenticated_system (= 2.1.3)!
   coffee-rails (~> 3.2.1)
   complex_scripts (= 2.0.8)!
+  dynamic_form
   hpricot (>= 0.8.6)
+  interface_utils (= 2.0.5)!
   jquery-rails
   json
   memcache-client

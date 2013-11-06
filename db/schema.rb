@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131106023305) do
+ActiveRecord::Schema.define(:version => 20131106180415) do
 
   create_table "languages", :force => true do |t|
     t.string  "title",                   :limit => 100,                    :null => false
@@ -19,6 +19,12 @@ ActiveRecord::Schema.define(:version => 20131106023305) do
     t.integer "unicode_codepoint_start"
     t.integer "unicode_codepoint_end"
     t.boolean "use_for_interface",                      :default => false, :null => false
+  end
+
+  create_table "messages", :force => true do |t|
+    t.text     "content",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "people", :force => true do |t|
@@ -57,13 +63,14 @@ ActiveRecord::Schema.define(:version => 20131106023305) do
     t.integer  "person_id"
     t.string   "login",                     :limit => 80, :null => false
     t.string   "crypted_password",          :limit => 40
+    t.string   "shibboleth_id"
     t.string   "email"
+    t.string   "identity_url"
     t.string   "salt",                      :limit => 40
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
     t.string   "remember_token"
     t.datetime "remember_token_expires_at"
-    t.string   "shibboleth_id"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true

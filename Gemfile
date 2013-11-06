@@ -28,13 +28,15 @@ gem 'jquery-rails'
 gem 'tinymce-rails', '3.5.6' # compatible with ruby 1.8.7
 gem 'memcache-client'
 gem 'open_id_authentication'
+gem 'dynamic_form'
 gem 'annotate'
 
-gem 'passiverecord',              '0.2',          :git => 'git://github.com/ambethia/passiverecord.git'
+gem 'passiverecord',        '0.2',   :git => 'git://github.com/ambethia/passiverecord.git'
 
-gem 'authenticated_system',       '2.1.3',        :git => 'git://github.com/thl/authenticated_system.git',        :tag => 'v2.1.3' #:path => '../../thl/engines/authenticated_system'
-gem 'complex_scripts',            '2.0.8',        :git => 'git://github.com/thl/complex_scripts.git',             :tag => 'v2.0.8' #:path => '../../thl/engines/complex_scripts'
-gem 'shanti_integration',         '2.1.8',        :git => 'git://github.com/shanti-uva/shanti_integration.git',   :tag => 'v2.1.8' #:path => '../engines/shanti_integration'
+gem 'authenticated_system', '2.1.3', :path => '../../thl/engines/authenticated_system' #:git => 'git://github.com/thl/authenticated_system.git',        :tag => 'v2.1.3'
+gem 'complex_scripts',      '2.0.8', :path => '../../thl/engines/complex_scripts' #:git => 'git://github.com/thl/complex_scripts.git',             :tag => 'v2.0.8'
+gem 'interface_utils',      '2.0.5', :git => 'git://github.com/thl/interface_utils.git', :tag => 'v2.0.5' #:path => '../../thl/engines/interface_utils'
+gem 'shanti_integration',   '2.1.8', :path => '../engines/shanti_integration' #:git => 'git://github.com/shanti-uva/shanti_integration.git', :tag => 'v2.1.8'
 
 
 # To use ActiveModel has_secure_password
