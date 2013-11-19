@@ -10,7 +10,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131106180415) do
+ActiveRecord::Schema.define(:version => 20131108181658) do
+
+  create_table "contexts", :force => true do |t|
+    t.text     "key"
+    t.integer  "message_id"
+    t.integer  "document_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "document_types", :force => true do |t|
+    t.string   "name"
+    t.integer  "platform_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "documents", :force => true do |t|
+    t.integer  "document_type_id"
+    t.integer  "project_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "languages", :force => true do |t|
     t.string  "title",                   :limit => 100,                    :null => false
@@ -44,6 +66,18 @@ ActiveRecord::Schema.define(:version => 20131106180415) do
   end
 
   add_index "permissions_roles", ["permission_id", "role_id"], :name => "index_permissions_roles_on_permission_id_and_role_id", :unique => true
+
+  create_table "platforms", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "roles", :force => true do |t|
     t.string "title",       :limit => 20, :null => false

@@ -1,0 +1,38 @@
+<%= form_for(@context) do |f| %>
+
+  <% if @context.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@context.errors.count, "error") %> prohibited this context from being saved:</h2>
+
+      <ul>
+      <% @context.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :document_id %><br />
+    <% @document = @documents.collect {|l| [ h(l.project.name + ' - ' + l.document_type.name + ' - ' + l.document_type.platform.name), l.id ] } %>
+	<%= select(:context, :document_id, @document, { :include_blank => true })  %>
+
+    <%#= f.number_field :document_id %>
+  </div>
+  <div class="field">
+    <%#= f.label :message_id %><br />
+    <%#= f.number_field :message_id %>
+    <input type="hidden" name="context[message_id]" value="<%= params["message_id"] %>"/> 
+  </div>
+  <div class="field">
+    <%= f.label :key %><br />
+    <%#= f.text_area :key %>
+	<%= f.text_field :key %>
+	
+  </div>
+
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

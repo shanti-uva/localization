@@ -14,7 +14,8 @@ class MessagesController < AclController
   # GET /messages/1.json
   def show
     @message = Message.find(params[:id])
-
+    @contexts = @message.contexts
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @message }
@@ -40,6 +41,7 @@ class MessagesController < AclController
   # POST /messages
   # POST /messages.json
   def create
+    debugger
     @message = Message.new(params[:message])
 
     respond_to do |format|

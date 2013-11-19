@@ -1,5 +1,22 @@
 Localization::Application.routes.draw do
-  resources :messages
+  resources :contexts
+
+
+  resources :documents
+
+
+  resources :document_types
+
+
+  resources :platforms
+
+
+  resources :projects
+
+
+  resources :messages do
+    resources :contexts
+  end
 
 
   # The priority is based upon order of creation:

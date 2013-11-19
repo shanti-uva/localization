@@ -1,0 +1,28 @@
+<%= form_for(@document_type) do |f| %>
+  <% if @document_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@document_type.errors.count, "error") %> prohibited this document_type from being saved:</h2>
+
+      <ul>
+      <% @document_type.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :platform_id %><br />
+    <% @platform = @platforms.collect {|l| [ h(l.name), l.id ] } %>
+	<%= select(:document_type, :platform_id, @platform, { :include_blank => true })  %>
+    <%#= f.number_field :platform_id %>
+    <br />
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
