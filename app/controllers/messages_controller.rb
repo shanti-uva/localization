@@ -41,7 +41,6 @@ class MessagesController < AclController
   # POST /messages
   # POST /messages.json
   def create
-    debugger
     @message = Message.new(params[:message])
 
     respond_to do |format|

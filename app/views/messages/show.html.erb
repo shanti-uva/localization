@@ -30,7 +30,7 @@
 	<td><%= context.key %></td>
     <td><%#= link_to 'Show', document_type %></td>
     <td><%= link_to 'Edit', edit_message_context_path(@message,context) %></td>
-    <td><%#= link_to 'Destroy', document_type, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+    <td><%= link_to 'Destroy', context, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

@@ -75,10 +75,12 @@ class ContextsController < AclController
   # DELETE /contexts/1.json
   def destroy
     @context = Context.find(params[:id])
+    @parent_message = @context.message
     @context.destroy
 
     respond_to do |format|
-      format.html { redirect_to contexts_url }
+      #format.html { redirect_to contexts_url }
+      format.html { redirect_to @parent_message}
       format.json { head :no_content }
     end
   end
