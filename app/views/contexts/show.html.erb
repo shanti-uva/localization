@@ -26,8 +26,7 @@
     <th>Language</th>
     <th>Translation</th>
 
-	<th></th>
-    <th></th>
+
     <th></th>
     <th></th>
   </tr>
@@ -36,10 +35,9 @@
   <tr>
 
     <td><%= translation.language.title %></td>
-    <td><%= translation.content %></td>
+    <td><%= link_to translation.content, message_context_translation_path(@message,@context,translation) %></td>
 
-	<td><%#= context.key %></td>
-    <td><%#= link_to 'Show', document_type %></td>
+
     <td>
 		<%# if authorized? hash_for_edit_message_context_path %>
 			<%=  link_to ts('edit.this'), edit_message_context_translation_path(@message,@context,translation) %> |
