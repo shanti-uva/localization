@@ -14,14 +14,27 @@
     <td><%= document_type.name %></td>
     <td><%= document_type.platform.name %></td>
     <td><%= link_to 'Show', document_type %></td>
-    <td><%= link_to 'Edit', edit_document_type_path(document_type) %></td>
-    <td><%= link_to 'Destroy', document_type, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+    <td>
+		<% if authorized? hash_for_edit_document_type_path %>
+			<%=  link_to ts('edit.this'), edit_document_type_path(document_type)  %> |
+		<% end %>
+		<%#= link_to 'Edit', edit_document_type_path(document_type) %>
+	</td>
+    <td>
+		<% if authorized? hash_for_document_type_path(:action => 'destroy') %>
+		<%=  link_to ts('delete.this'), document_type_path(document_type), :confirm => te('delete.confirmation'), :method => :delete %> 
+		<% end %>
+		<%#= link_to 'Destroy', document_type, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+	</td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Document type', new_document_type_path %>
+<% if authorized? hash_for_new_document_type_path %>
+<%=  link_to ts('new.record', :what => DocumentType.model_name.human), new_document_type_path %> 
+<% end %>
+<%#= link_to 'New Document type', new_document_type_path %>
 <br/>
 <%= link_to 'Home', root_path %>

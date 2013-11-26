@@ -14,7 +14,9 @@ class ContextsController < AclController
   # GET /contexts/1.json
   def show
     @context = Context.find(params[:id])
-
+    @message = Message.find(@context.message.id)
+    @translations = @context.translations
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @context }

@@ -11,7 +11,7 @@
   <%#= @message.content %>
 </p>
 
-<table>
+<table border="1">
   <tr>
     <th>Project</th>
     <th>Platform</th>
@@ -27,15 +27,28 @@
     <td><%= context.document.project.name %></td>
     <td><%= context.document.document_type.platform.name %></td>
 	<td><%= context.document.document_type.name %></td>
-	<td><%= context.key %></td>
+	<td><%= link_to context.key, message_context_path(@message,context) %></td>
     <td><%#= link_to 'Show', document_type %></td>
-    <td><%= link_to 'Edit', edit_message_context_path(@message,context) %></td>
-    <td><%= link_to 'Destroy', context, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+    <td>
+		<% if authorized? hash_for_edit_message_context_path %>
+			<%=  link_to ts('edit.this'), edit_message_context_path(@message,context) %> |
+		<% end %>
+		<%#= link_to 'Edit', edit_message_context_path(@message,context) %>
+	</td>
+    <td>
+		<% if authorized? hash_for_message_context_path(@message,context,:action => 'destroy') %>
+		<%=  link_to ts('delete.this'), message_context_path(@message,context), :confirm => te('delete.confirmation'), :method => :delete %> 
+		<% end %>
+		<%#= link_to 'Destroy', context, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+	</td>
   </tr>
 <% end %>
 </table>
 <p>
-<%= link_to 'New Context', new_message_context_path(@message) %>
+	<% if authorized? hash_for_new_message_context_path %>
+	<%=  link_to ts('new.record', :what => 'Context'), new_message_context_path(@message) %> 
+	<% end %>
+	<%#= link_to 'New Context', new_message_context_path(@message) %>
 </p>
 
 <br/>

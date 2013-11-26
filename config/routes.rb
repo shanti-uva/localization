@@ -1,4 +1,7 @@
 Localization::Application.routes.draw do
+  resources :translations
+
+
   resources :contexts
 
 
@@ -15,7 +18,9 @@ Localization::Application.routes.draw do
 
 
   resources :messages do
-    resources :contexts
+    resources :contexts do
+      resources :translations
+    end
   end
 
 

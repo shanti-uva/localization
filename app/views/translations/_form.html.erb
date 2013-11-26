@@ -1,0 +1,36 @@
+<%= form_for(@translation) do |f| %>
+  <% if @translation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@translation.errors.count, "error") %> prohibited this translation from being saved:</h2>
+
+      <ul>
+      <% @translation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%#= f.label :message_id %><br />
+    <%#= f.number_field :message_id %>
+  </div>
+  <div class="field">
+    <%= f.label :language_id %><br />
+    <% @language = @languages.collect {|l| [ h(l.title), l.id ] } %>
+	<%= select(:translation, :language_id, @language, { :include_blank => true })  %>
+    <%#= f.number_field :language_id %>
+  </div>
+  <div class="field">
+    <%#= f.label :context_id %><br />
+    <%#= f.number_field :context_id %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </div>
+  <input type="hidden" name="translation[context_id]" value="<%= params["context_id"] %>"/> 
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

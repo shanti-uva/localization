@@ -7,7 +7,7 @@
 
 <p>
   <b>Message:</b>
-  <%= @context.message_id %>
+  <%= @context.message.content %>
 </p>
 
 <p>
@@ -16,5 +16,52 @@
 </p>
 
 
-<%= link_to 'Edit', edit_context_path(@context) %> |
-<%= link_to 'Back', contexts_path %>
+<p>
+  <!--<b>Translations:</b> -->
+  <%#= @message.content %>
+</p>
+
+<table border="1">
+  <tr>
+    <th>Language</th>
+    <th>Translation</th>
+
+	<th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @translations.each do |translation| %>
+  <tr>
+
+    <td><%= translation.language.title %></td>
+    <td><%= translation.content %></td>
+
+	<td><%#= context.key %></td>
+    <td><%#= link_to 'Show', document_type %></td>
+    <td>
+		<%# if authorized? hash_for_edit_message_context_path %>
+			<%=  link_to ts('edit.this'), edit_message_context_translation_path(@message,@context,translation) %> |
+		<%# end %>
+		<%#= link_to 'Edit', edit_message_context_path(@message,context) %>
+	</td>
+    <td>
+		<%# if authorized? hash_for_context_path(:action => 'destroy') %>
+		<%=  link_to ts('delete.this'), message_context_translation_path(@message,@context,translation), :confirm => te('delete.confirmation'), :method => :delete %> 
+		<%# end %>
+		<%#= link_to 'Destroy', context, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+	</td>
+  </tr>
+<% end %>
+</table>
+<p>
+	<%# if authorized? hash_for_new_message_context_path %>
+	<%#=  link_to ts('new.record', :what => 'Context'), new_message_context_path(@message) %> 
+	<%# end %>
+	<%= link_to 'New Translation', new_message_context_translation_path(@context.message,@context) %>
+</p>
+
+
+<%= link_to 'Edit', edit_message_context_path(@context.message,@context) %> |
+<%= link_to 'Back', message_path(@context.message) %>

@@ -3,5 +3,5 @@ class Context < ActiveRecord::Base
   
   belongs_to :document, :foreign_key => 'document_id'
   belongs_to :message, :foreign_key => 'message_id'
-  
+  has_many :translations, :dependent => :destroy
 end

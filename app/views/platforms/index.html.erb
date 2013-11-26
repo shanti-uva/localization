@@ -12,14 +12,27 @@
   <tr>
     <td><%= platform.name %></td>
     <td><%= link_to 'Show', platform %></td>
-    <td><%= link_to 'Edit', edit_platform_path(platform) %></td>
-    <td><%= link_to 'Destroy', platform, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+    <td>
+		<% if authorized? hash_for_edit_platform_path %>
+			<%=  link_to ts('edit.this'), edit_platform_path(platform)  %> |
+		<% end %>
+		<%#= link_to 'Edit', edit_platform_path(platform) %>
+	</td>
+    <td>
+		<% if authorized? hash_for_platform_path(:action => 'destroy') %>
+		<%=  link_to ts('delete.this'), platform_path(platform), :confirm => te('delete.confirmation'), :method => :delete %> 
+		<% end %>
+		<%#= link_to 'Destroy', platform, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+	</td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Platform', new_platform_path %>
+<% if authorized? hash_for_new_platform_path %>
+<%=  link_to ts('new.record', :what => Platform.model_name.human), new_platform_path %> 
+<% end %>
+<%#= link_to 'New Platform', new_platform_path %>
 <br/>
 <%= link_to 'Home', root_path %>

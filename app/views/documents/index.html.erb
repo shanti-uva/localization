@@ -14,14 +14,29 @@
     <td><%= document.document_type.name %></td>
     <td><%= document.project.name %></td>
     <td><%= link_to 'Show', document %></td>
-    <td><%= link_to 'Edit', edit_document_path(document) %></td>
-    <td><%= link_to 'Destroy', document, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+    <td>
+		<% if authorized? hash_for_edit_document_path %>
+			<%=  link_to ts('edit.this'), edit_document_path(document)  %> |
+		<% end %>
+		<%#= link_to 'Edit', edit_document_path(document) %>
+	
+	</td>
+    <td>
+		<% if authorized? hash_for_document_path(:action => 'destroy') %>
+		<%=  link_to ts('delete.this'), document_path(document), :confirm => te('delete.confirmation'), :method => :delete %> 
+		<% end %>
+		<%#= link_to 'Destroy', document, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+	</td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Document', new_document_path %>
+<% if authorized? hash_for_new_document_path %>
+<%=  link_to ts('new.record', :what => Document.model_name.human), new_document_path %> 
+<% end %>
+<%#= link_to 'New Document', new_document_path %>
+
 <br/>
 <%= link_to 'Home', root_path %>

@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<p>
+  <b>Language:</b>
+  <%= @translation.language_id %>
+</p>
+
+<p>
+  <b>Context:</b>
+  <%= @translation.context_id %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @translation.content %>
+</p>
+
+
+<%= link_to 'Edit', edit_translation_path(@translation) %> |
+<%= link_to 'Back', translations_path %>

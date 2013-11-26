@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131108181658) do
+ActiveRecord::Schema.define(:version => 20131120012208) do
 
   create_table "contexts", :force => true do |t|
     t.text     "key"
@@ -92,6 +92,14 @@ ActiveRecord::Schema.define(:version => 20131108181658) do
   end
 
   add_index "roles_users", ["role_id", "user_id"], :name => "index_roles_users_on_role_id_and_user_id", :unique => true
+
+  create_table "translations", :force => true do |t|
+    t.integer  "language_id"
+    t.integer  "context_id"
+    t.text     "content"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.integer  "person_id"

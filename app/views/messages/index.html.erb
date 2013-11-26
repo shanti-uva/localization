@@ -12,15 +12,28 @@
   <tr>
     <td><%= link_to message.content, message %></td>
 	<td>&nbsp;&nbsp;&nbsp;</td>
-    <td><%= link_to 'Edit', edit_message_path(message) %></td>
-    <td><%= link_to 'Destroy', message, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+    <td>
+		<% if authorized? hash_for_edit_message_path %>
+			<%=  link_to ts('edit.this'), edit_message_path(message) %> |
+		<% end %>
+		<%#= link_to 'Edit', edit_message_path(message) %>
+		</td>
+    <td>
+		<% if authorized? hash_for_message_path(:action => 'destroy') %>
+		<%=  link_to ts('delete.this'), message_path(message), :confirm => te('delete.confirmation'), :method => :delete %> 
+		<% end %>
+		<%#= link_to 'Destroy', message, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+		</td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Message', new_message_path %>
+<% if authorized? hash_for_new_message_path %>
+<%=  link_to ts('new.record', :what => Message.model_name.human), new_message_path %> 
+<% end %>
+<%#= link_to 'New Message', new_message_path %>
 <p></p>
 <%= link_to 'Projects', projects_path %>&nbsp;&nbsp;
 <%= link_to 'Platforms', platforms_path %>&nbsp;&nbsp;
