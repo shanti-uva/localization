@@ -1,4 +1,5 @@
-<%= form_for(@translation) do |f| %>
+<%#= form_for([@message, @context, @translation]) do |f| %>
+<%= form_for(@parent_array + [@translation])  do |f| %>
   <% if @translation.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@translation.errors.count, "error") %> prohibited this translation from being saved:</h2>
@@ -29,7 +30,7 @@
     <%= f.label :content %><br />
     <%= f.text_area :content %>
   </div>
-  <input type="hidden" name="translation[context_id]" value="<%= params["context_id"] %>"/> 
+  <!--<input type="hidden" name="translation[context_id]" value="<%#= params["context_id"] %>"/>  -->
   <div class="actions">
     <%= f.submit %>
   </div>

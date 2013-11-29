@@ -94,11 +94,12 @@ ActiveRecord::Schema.define(:version => 20131120012208) do
   add_index "roles_users", ["role_id", "user_id"], :name => "index_roles_users_on_role_id_and_user_id", :unique => true
 
   create_table "translations", :force => true do |t|
+    t.integer  "translated_id"
+    t.string   "translated_type"
     t.integer  "language_id"
-    t.integer  "context_id"
     t.text     "content"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "users", :force => true do |t|

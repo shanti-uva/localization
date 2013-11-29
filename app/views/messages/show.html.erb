@@ -7,9 +7,43 @@
 </p>
 
 <p>
-  <!--<b>Contexts:</b> -->
-  <%#= @message.content %>
+<table border="1">
+  <tr>
+    <th>Language</th>
+    <th>Translation</th>
+
+
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @translations.each do |translation| %>
+  <tr>
+
+    <td><%= translation.language.title %></td>
+    <td><%= link_to translation.content, message_translation_path(@message,translation) %></td>
+
+    <td>
+		<%# if authorized? hash_for_edit_message_context_path %>
+			<%=  link_to ts('edit.this'), edit_message_translation_path(@message,translation) %> |
+		<%# end %>
+	</td>
+    <td>
+		<%# if authorized? hash_for_context_path(:action => 'destroy') %>
+		<%=  link_to ts('delete.this'), message_translation_path(@message,translation), :confirm => te('delete.confirmation'), :method => :delete %> 
+		<%# end %>
+	</td>
+  </tr>
+<% end %>
+</table>
 </p>
+<p>
+	<% if authorized? hash_for_new_message_translation_path %>
+	<%=  link_to ts('new.record', :what => 'Translation'), new_message_translation_path(@message) %> 
+	<% end %>
+</p>
+
+
 
 <table border="1">
   <tr>

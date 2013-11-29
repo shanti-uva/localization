@@ -3,4 +3,5 @@
 <%= render 'form' %>
 
 <%#= link_to 'Show', @translation %> |
-<%= link_to 'Back', message_context_path(@message,@context) %>
+<%#= link_to 'Back', message_context_path(@message,@context) %>
+<%= link_to 'Back', polymorphic_path(@parent_array) %>

@@ -1,4 +1,7 @@
 class ContextsController < AclController
+  
+    before_filter :find_message
+    
   # GET /contexts
   # GET /contexts.json
   def index
@@ -86,4 +89,9 @@ class ContextsController < AclController
       format.json { head :no_content }
     end
   end
+  
+  def find_message
+       @message = Message.find(params[:message_id])
+       
+   end  
 end

@@ -16,6 +16,8 @@ class MessagesController < AclController
     @message = Message.find(params[:id])
     @contexts = @message.contexts
     
+    @translations = @message.translations
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @message }
