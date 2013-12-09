@@ -6,10 +6,10 @@ GIT
 
 GIT
   remote: git://github.com/shanti-uva/shanti_integration.git
-  revision: 6b32dafe0dc296528a52f0647cc05351516f7f5d
-  tag: v2.1.9
+  revision: d4adc1341c8881b0a8802afeda45ca4fea1307e8
+  tag: v2.2.2
   specs:
-    shanti_integration (2.1.9)
+    shanti_integration (2.2.2)
       rails (~> 3.2.8)
 
 GIT
@@ -191,7 +191,7 @@ DEPENDENCIES
   rails (= 3.2.13)
   ruby-debug
   sass-rails (~> 3.2.3)
-  shanti_integration (= 2.1.9)!
+  shanti_integration (= 2.2.2)!
   tinymce-rails (= 3.5.6)
   uglifier (>= 1.0.3)
   will_paginate (~> 3.0)

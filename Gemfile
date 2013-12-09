@@ -36,7 +36,7 @@ gem 'passiverecord',        '0.2',   :git => 'git://github.com/ambethia/passiver
 gem 'authenticated_system', '2.1.4', :git => 'git://github.com/thl/authenticated_system.git',      :tag => 'v2.1.4' #:path => '../../thl/engines/authenticated_system'
 gem 'complex_scripts',      '2.0.9', :git => 'git://github.com/thl/complex_scripts.git',           :tag => 'v2.0.9' #:path => '../../thl/engines/complex_scripts'
 gem 'interface_utils',      '2.0.5', :git => 'git://github.com/thl/interface_utils.git',           :tag => 'v2.0.5' #:path => '../../thl/engines/interface_utils'
-gem 'shanti_integration',   '2.1.9', :git => 'git://github.com/shanti-uva/shanti_integration.git', :tag => 'v2.1.9' #:path => '../engines/shanti_integration'
+gem 'shanti_integration',   '2.2.2',:git => 'git://github.com/shanti-uva/shanti_integration.git', :tag => 'v2.2.2' #:path => '../engines/shanti_integration'
 
 
 # To use ActiveModel has_secure_password
